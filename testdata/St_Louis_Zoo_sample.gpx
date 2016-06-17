@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<gpx xmlns="http://www.topografix.com/GPX/1/1" creator="Geovative Solutions GeoTours" version="1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+
+<metadata>
+  <name>St Louis Zoo sample</name>
+  <desc>This self guided,GPS enabled tour of the world famous St. Louis Zoo, has 85 points of interest. Narratives in english,explaining each exhibit and provides guidance to zoo facilities.This audio tour guide can enhance your next visit.</desc>
+  <author>
+    <name>wizardone, using GeoTours</name>
+    <link href="http://www.geovative.com/view?t=GEIF">
+      <text>St Louis Zoo sample</text>
+    </link>
+  </author>
+  <link href="http://www.geovative.com/view?t=GEIF">
+    <text>St Louis Zoo sample</text>
+  </link>
+  <time>2008-02-26T19:49:13</time>
+  <keywords>Audio tour guide
+St.Louis Mo.
+Zoo
+Forest Park
+Animals</keywords>
+</metadata>
+<trk>
+    <name>trk name</name>
+<trkseg>
+<trkpt lat="18.231815" lon="109.521163">
+<time>2016-01-22T21:56:41Z</time></trkpt>
+<trkpt lat="18.232095" lon="109.521003">
+<time>2016-01-22T21:56:42Z</time></trkpt>
+<trkpt lat="18.232205" lon="109.520953">
+<time>2016-01-22T21:56:43Z</time></trkpt>
+<trkpt lat="18.232285" lon="109.520923">
+<time>2016-01-22T21:56:44Z</time></trkpt>
+<trkpt lat="18.232355" lon="109.520903">
+<time>2016-01-22T21:56:45Z</time></trkpt>
+<trkpt lat="18.232415" lon="109.520883">
+<time>2016-01-22T21:56:46Z</time></trkpt>
+<trkpt lat="18.232475" lon="109.520873">
+<time>2016-01-22T21:56:47Z</time></trkpt>
+<trkpt lat="18.232515" lon="109.520863">
+<time>2016-01-22T21:56:48Z</time></trkpt>
+<trkpt lat="18.232605" lon="109.520833">
+<time>2016-01-22T21:56:49Z</time></trkpt>
+<trkpt lat="18.232765" lon="109.520772">
+<time>2016-01-22T21:56:50Z</time></trkpt>
+<trkpt lat="18.232855" lon="109.520762">
+<time>2016-01-22T21:56:51Z</time></trkpt>
+<trkpt lat="18.232925" lon="109.520762">
+<time>2016-01-22T21:56:52Z</time></trkpt>
+<trkpt lat="18.232975" lon="109.520762">
+<time>2016-01-22T21:56:53Z</time></trkpt>
+<trkpt lat="18.233035" lon="109.520782">
+<time>2016-01-22T21:56:54Z</time></trkpt>
+<trkpt lat="18.233085" lon="109.520802">
+<time>2016-01-22T21:56:55Z</time></trkpt>
+<trkpt lat="18.233245" lon="109.520812">
+<time>2016-01-22T21:56:56Z</time></trkpt>
+<trkpt lat="18.233405" lon="109.520823">
+<time>2016-01-22T21:56:57Z</time></trkpt>
+<trkpt lat="18.233415" lon="109.520823">
+<time>2016-01-22T21:56:58Z</time></trkpt>
+<trkpt lat="18.233505" lon="109.520823">
+<time>2016-01-22T21:56:59Z</time></trkpt>
+<trkpt lat="18.233535" lon="109.520822">
+<time>2016-01-22T21:57:00Z</time></trkpt>
+<trkpt lat="18.233565" lon="109.520812">
+<time>2016-01-22T21:57:01Z</time></trkpt>
+<trkpt lat="18.233585" lon="109.520802">
+<time>2016-01-22T21:57:02Z</time></trkpt>
+<trkpt lat="18.233625" lon="109.520772">
+<time>2016-01-22T21:57:03Z</time></trkpt>
+<trkpt lat="18.233625" lon="109.520772">
+<time>2016-01-22T21:57:04Z</time></trkpt>
+<trkpt lat="18.233615" lon="109.520762">
+<time>2016-01-22T21:57:05Z</time></trkpt>
+<trkpt lat="18.233505" lon="109.520682">
+<time>2016-01-22T21:57:06Z</time></trkpt>
+<trkpt lat="18.233344" lon="109.520622">
+<time>2016-01-22T21:57:07Z</time></trkpt>
+<trkpt lat="18.233154" lon="109.520542">
+<time>2016-01-22T21:57:08Z</time></trkpt>
+<trkpt lat="18.232984" lon="109.520442">
+<time>2016-01-22T21:57:09Z</time></trkpt>
+<trkpt lat="18.232723" lon="109.520291">
+<time>2016-01-22T21:57:10Z</time></trkpt>
+<trkpt lat="18.232653" lon="109.520261">
+<time>2016-01-22T21:57:11Z</time></trkpt>
+</trkseg>
+</trk>
+<wpt lat="38.63473" lon="-90.29408">
+<name>Asian Elephant</name>
+<desc>elephant</desc>
+<link href="Data/Location3152-1"/>
+<sym>Waypoint</sym>
+</wpt>
+
+<wpt lat="38.63368" lon="-90.28679">
+<name>Bactrian Camel</name>
+<desc>camel</desc>
+<link href="Data/Location3152-2"/>
+<sym>Waypoint</sym>
+</wpt>
+
+<wpt lat="38.63408" lon="-90.29323">
+<name>Black Rhinoceros</name>
+<desc>black rhino</desc>
+<link href="Data/Location3152-3"/>
+<sym>Waypoint</sym>
+</wpt>
+
+<wpt lat="38.63533" lon="-90.29019">
+<name>Cafe Restroom</name>
+<desc>cafe restroom</desc>
+<link href="Data/Location3152-4"/>
+<sym>Waypoint</sym>
+</wpt>
+
+<wpt lat="38.63677" lon="-90.28976">
+<name>Polar Bear</name>
+<desc>polar bear</desc>
+<link href="Data/Location3152-5"/>
+<sym>Waypoint</sym>
+</wpt>
+
+<wpt lat="38.63496" lon="-90.28948">
+<name>California Sea Lion</name>
+<desc>sea lion</desc>
+<link href="Data/Location3152-6"/>
+<sym>Waypoint</sym>
+</wpt>
+
+<wpt lat="38.63421" lon="-90.29458">
+<name>Cheetah</name>
+<desc>cheetah</desc>
+<link href="Data/Location3152-7"/>
+<sym>Waypoint</sym>
+</wpt>
+
+<wpt lat="38.63633" lon="-90.29083">
+<name>Grizzley Bear</name>
+<desc>grizzly bear</desc>
+<link href="Data/Location3152-8"/>
+<sym>Waypoint</sym>
+</wpt>
+
+<wpt lat="38.63395" lon="-90.28715">
+<name>Jaguar</name>
+<desc>jaguar</desc>
+<link href="Data/Location3152-9"/>
+<sym>Waypoint</sym>
+</wpt>
+
+<wpt lat="38.63347" lon="-90.28769">
+<name>Lion</name>
+<desc>African lions live in a number of different habitats: grassy plains, open woodlands, semi-desert areas, even high mountains.</desc>
+<link href="Data/Location3152-10"/>
+<sym>Waypoint</sym>
+</wpt>
+
+
+</gpx>
