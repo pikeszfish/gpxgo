@@ -110,19 +110,6 @@ func (ld *LocationDelta) Move(wp *Wpt) {
 	wp.Lon = Degrees(lon)
 }
 
-// https://github.com/tkrajina/gpxpy/blob/master/gpxpy/geo.py
-// not work !
-// func (ld *LocationDelta) Move2(wp *Wpt) {
-// 	ONE_DEGREE := 1000. * 10000.8 / 90.
-// 	coef := math.Cos(wp.Lat / 180. * math.Pi)
-// 	vertical_distance_diff := math.Sin((90-ld.Angle)/180.*math.Pi) / ONE_DEGREE
-// 	horizontal_distance_diff := math.Cos((90-ld.Angle)/180.*math.Pi) / ONE_DEGREE
-// 	lat_diff := ld.Distance * vertical_distance_diff
-// 	lon_diff := ld.Distance * horizontal_distance_diff / coef
-// 	wp.Lat += lat_diff
-// 	wp.Lon += lon_diff
-// }
-
 /*==========================================================*/
 // Location
 

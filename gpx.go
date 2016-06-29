@@ -155,12 +155,6 @@ func ParseWithContent(content []byte) (*Gpx, error) {
 }
 
 func ParseWithReader(o io.Reader) (*Gpx, error) {
-	// data, err := ioutil.ReadAll(o)
-	// if err != nil {
-	// 	return nil, err
-	// }
-
-	// return ParseWithContent(data)
 	gpx := NewGpx()
 	d := xml.NewDecoder(o)
 	d.CharsetReader = charset.NewReaderLabel
@@ -173,10 +167,10 @@ func ParseWithReader(o io.Reader) (*Gpx, error) {
 
 func ParseWithPath(path string) (*Gpx, error) {
 	file, err := os.Open(path)
+	defer file.Close()
 	if err != nil {
 		return nil, err
 	}
-	defer file.Close()
 
 	return ParseWithReader(file)
 }
@@ -238,14 +232,11 @@ func (g *Gpx) Clone() *Gpx {
 
 	if g.Metadata != nil {
 		newgpx.Metadata = &Metadata{
-			Name: g.Metadata.Name,
-			Desc: g.Metadata.Desc,
-			// Author:     g.Metadata.Author,
-			// Copyright:  g.Metadata.Copyright,
-			Link:     make([]Link, len(g.Metadata.Link)),
-			Time:     g.Metadata.Time,
-			Keywords: g.Metadata.Keywords,
-			// Bounds:     g.Metadata.Bounds,
+			Name:       g.Metadata.Name,
+			Desc:       g.Metadata.Desc,
+			Link:       make([]Link, len(g.Metadata.Link)),
+			Time:       g.Metadata.Time,
+			Keywords:   g.Metadata.Keywords,
 			Extensions: g.Metadata.Extensions,
 		}
 		copy(newgpx.Metadata.Link, g.Metadata.Link)
@@ -330,12 +321,9 @@ func (g *Gpx) UphillDownhill() (float64, float64) {
 	return uphill, downhill
 }
 
-func (g *Gpx) ElevationExtremes() (float64, float64) {
-	// elevations := []int{}
+func (g *Gpx) ElevationExtremes() (min float64, max float64) {
 	var (
 		elevations []float64
-		min        float64
-		max        float64
 	)
 	for _, trk := range g.Tracks {
 		min, max = trk.ElevationExtremes()
@@ -442,11 +430,9 @@ func (t *Trk) UphillDownhill() (float64, float64) {
 	return uphill, downhill
 }
 
-func (t *Trk) ElevationExtremes() (float64, float64) {
+func (t *Trk) ElevationExtremes() (min float64, max float64) {
 	var (
 		elevations []float64
-		min        float64
-		max        float64
 	)
 	for _, seg := range t.Segments {
 		min, max = seg.ElevationExtremes()
@@ -511,33 +497,44 @@ func (ts Trkseg) String() string {
 	return fmt.Sprintf("Waypoints Count: %d", len(ts.Waypoints))
 }
 
-func (ts *Trkseg) UphillDownhill() (float64, float64) {
-	return 0.0, 0.0
-	// var (
-	// 	uphill             float64
-	// 	downhill           float64
-	// 	smoothedElevations []float64
-	// )
-	// // for _, wp := range ts.Waypoints {
+func (ts *Trkseg) UphillDownhill() (uphill float64, downhill float64) {
+	var (
+		smoothedElevations               []float64
+		previousEle, currentEle, nextEle float64
+		f                                float64
+	)
+	if ts.Waypoints == nil || len(ts.Waypoints) <= 1 {
+		return 0.0, 0.0
+	}
 
-	// // }
-	// for i := 0; i < len(ts.Waypoints); i++ {
-	// 	if i > 0 && i < len(ts.Waypoints)-1 {
-	// 		previousWp := ts.Waypoints[i-1]
-	// 		nextWp := ts.Waypoints[i+1]
-	// 		if previousWp.Ele && ts.Waypoints[i].Ele && nextWp.Ele {
-	// 			smoothedElevations = append(smoothedElevations, previousWp*0.3 + )
-	// 		}
-	// 	}
+	smoothedElevations = append(smoothedElevations, ts.Waypoints[0])
+	for i := 0; i < len(ts.Waypoints); i++ {
+		if i > 0 && i < len(ts.Waypoints)-1 {
+			previousEle = ts.Waypoints[i-1].Ele
+			currentEle = ts.Waypoints[i].Ele
+			nextEle = ts.Waypoints[i+1].Ele
+			smoothedElevations = append(smoothedElevations, previousEle*0.3+currentEle*0.4+nextEle*0.3)
+		}
+	}
+	smoothedElevations = append(smoothedElevations, ts.Waypoints[len(ts.Waypoints)-1])
 
-	// }
+	for index, ele := range smoothedElevations {
+		if index == 0 {
+			continue
+		}
+		d = ele - smoothedElevations[index-1]
+		if d > 0 {
+			uphill += d
+		} else {
+			downhill -= d
+		}
+	}
+	return uphill, downhill
 }
 
-func (ts *Trkseg) ElevationExtremes() (float64, float64) {
-	var (
-		min float64
-		max float64
-	)
+func (ts *Trkseg) ElevationExtremes() (min float64, max float64) {
+	min = 0.0
+	max = 0.0
 	for _, wp := range ts.Waypoints {
 		if wp.Ele < min {
 			min = wp.Ele
@@ -560,49 +557,6 @@ func (ts *Trkseg) RemoveElevation() {
 		wp.RemoveElevation()
 	}
 }
-
-/*==========================================================*/
-// Waypoints / []Wpt
-// func (w Waypoints) Bounds() *Bounds {
-// 	b := minBounds()
-// 	for _, wp := range w {
-// 		b.merge(&Bounds{
-// 			MaxLat: wp.Lat,
-// 			MinLat: wp.Lat,
-// 			MaxLon: wp.Lon,
-// 			MinLon: wp.Lon,
-// 		})
-// 	}
-// 	return b
-// }
-
-// func (w Waypoints) Length2D() float64 {
-// 	var length2d float64
-// 	for i := 1; i < len(w); i++ {
-// 		length2d += w[i].Length2D(&w[i-1])
-// 	}
-// 	return length2d
-// }
-
-// func (w Waypoints) Length3D() float64 {
-// 	var length3d float64
-// 	for i := 1; i < len(w); i++ {
-// 		length3d += w[i].Length3D(&w[i-1])
-// 	}
-// 	return length3d
-// }
-
-// func (w Waypoints) RemoveTime() {
-// 	for _, wp := range w {
-// 		wp.RemoveTime()
-// 	}
-// }
-
-// func (w Waypoints) RemoveElevation() {
-// 	for _, wp := range w {
-// 		wp.RemoveElevation()
-// 	}
-// }
 
 /*==========================================================*/
 // Wpt
